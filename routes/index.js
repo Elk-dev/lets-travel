@@ -9,6 +9,8 @@ router.get('/', hotelController.homePage);
 
 router.get('/all', hotelController.listAllHotels);
 
-
+//ADMIN Routes:
+router.get('/admin', hotelController.adminPage);
+router.get('/admin/add', hotelController.createHotelGet);
 
 module.exports = router;
