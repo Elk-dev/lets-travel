@@ -12,5 +12,6 @@ router.get('/all', hotelController.listAllHotels);
 //ADMIN Routes:
 router.get('/admin', hotelController.adminPage);
 router.get('/admin/add', hotelController.createHotelGet);
+router.post('/admin/add', hotelController.createHotelPost);
 
 module.exports = router;
