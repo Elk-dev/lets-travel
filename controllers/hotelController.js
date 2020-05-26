@@ -13,6 +13,15 @@ exports.listAllHotels = async (req, res, next) => {
     }
 }
 
+exports.listAllCountries = async (req, res) => {
+    try {
+    const allCountries = await Hotel.distinct('country');
+    res.render('all_countries', {title: 'Browse by country', allCountries});
+    } catch (error) {
+        next(error);
+    }
+}
+
 exports.adminPage = (req, res) => {
     res.render('admin', {title: 'Admin'});
 }
