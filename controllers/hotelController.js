@@ -4,8 +4,13 @@ exports.homePage = (req, res) => {
     res.render('index', { title: 'Lets travel' });
 }
 
-exports.listAllHotels = (req, res) => {
-    res.render('all_hotels', {title: 'All Hotels'});
+exports.listAllHotels = async (req, res, next) => {
+    try {
+    const allHotels = await Hotel.find({ available: { $eq: true }});
+    res.render('all_hotels', {title: 'All Hotels', allHotels});
+    } catch(errors) {
+        next(errors)
+    }
 }
 
 exports.adminPage = (req, res) => {
