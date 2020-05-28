@@ -118,7 +118,17 @@ exports.deleteHotelPost = async (req, res, next) => {
     try {
         const hotelId =  req.params.hotelId;
         const hotel = await Hotel.findByIdAndRemove({ _id: hotelId });
-        res.redirect('/')
+        res.redirect('/');
+    }catch(error) {
+        next(error)
+    }
+}
+
+exports.hotelDetail = async (req, res, next) => {
+    try {
+        const hotelParam = req.params.hotel;
+        const hotelData = await Hotel.find( { _id: hotelParam} );
+        res.render('hotel_detail',  { title: 'Lets Travel', hotelData});
     }catch(error) {
         next(error)
     }
