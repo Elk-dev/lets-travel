@@ -84,3 +84,22 @@ exports.editRemovePost = async (req, res, next) => {
         next(errors)
     }
 }
+
+exports.updateHotelGet = async (req, res, next) => {
+    try {
+        const hotel = await Hotel.findOne({_id: req.params.hotelId});
+        res.render('add_hotel', {title: 'Update hotel', hotel});
+    }catch (error){
+        next(error)
+    }
+}
+
+exports.updateHotelPost = async (req, res, next) => {
+    try{
+        const hotelId = req.params.hotelId;
+        const hotel = await Hotel.findByIdAndUpdate(hotelId, req.body, {new: true});
+        res.redirect(`/all/${hotelId}`)
+    }catch (error) {
+        next(error)
+    }
+}
