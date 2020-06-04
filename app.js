@@ -13,6 +13,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use( (req,res, next) => {
+  res.locals.url = req.path
+  next();
+});
+
 //set up mongoose connection
 mongoose.connect('mongodb+srv://lets_travel_admin:thisisapassword@cluster0-0uv2i.mongodb.net/test?retryWrites=true&w=majority');
 mongoose.Promise = global.Promise;
