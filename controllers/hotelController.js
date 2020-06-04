@@ -138,7 +138,7 @@ exports.hotelByCountry = async (req, res, next) => {
     try{
         const countryParam = req.params.country
         const countryList = await Hotel.find({country: countryParam});
-        res.render('hotels_by_country'. {title: `Browse by country: ${countryParam}`, countryList});
+        res.render('hotels_by_country', {title: `Browse by country: ${countryParam}`, countryList});
     }catch(error){
         next(error)
     }
