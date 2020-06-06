@@ -36,6 +36,7 @@ exports.homePageFilters = async (req, res, next) => {
         const [filteredCountries, filteredHotels] = await Promise.all([countries, hotels]);
 
         res.render('index', { filteredCountries, filteredHotels});
+        
     }catch(error){
         next(error)
     }
