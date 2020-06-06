@@ -134,7 +134,7 @@ exports.hotelDetail = async (req, res, next) => {
     }
 }
 
-exports.hotelByCountry = async (req, res, next) => {
+exports.hotelsByCountry = async (req, res, next) => {
     try{
         const countryParam = req.params.country
         const countryList = await Hotel.find({country: countryParam});
